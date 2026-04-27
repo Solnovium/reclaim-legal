@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Reclaim</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<header class="site">
+  <a href="index.en.html" class="brand">Reclaim</a>
+  <nav class="lang">
+    <a href="privacy.html">IT</a>
+    <a href="privacy.en.html" class="active">EN</a>
+  </nav>
+</header>
+
+<h1>Privacy Policy</h1>
+<p class="meta">Version 1.0 — Last updated: April 27, 2026</p>
+
+<p>This Privacy Policy describes how Solnovium SRLS collects, uses and protects the personal data of Reclaim app users, in compliance with EU Regulation 2016/679 (GDPR), Italian Legislative Decree 196/2003 as amended, and the guidelines of the Italian Data Protection Authority (Garante).</p>
+
+<h2>1. Data controller</h2>
+<p>
+  <strong>Solnovium SRLS</strong><br>
+  Registered office: Via Cunfida 20, 00195 Roma (RM), Italy<br>
+  VAT: IT18514011008<br>
+  Italian Business Registry (REA): RM-1789663<br>
+  Privacy contact: <a href="mailto:privacy.reclaim@solnovium.com">privacy.reclaim@solnovium.com</a>
+</p>
+<p>For any request regarding the processing of your data, this policy or your GDPR rights, write to the email above. We will respond within 30 days of receipt.</p>
+
+<h2>2. Philosophy: what we DO NOT collect</h2>
+<p>Reclaim is designed under the principle of <strong>data minimization</strong>: we collect the bare minimum needed for the service to function. The following information <strong>never leaves your device</strong> and <strong>is never transmitted to us</strong>:</p>
+<ul>
+  <li>The <strong>list of apps installed</strong> on your phone. Reclaim reads it locally only to let you choose which apps to block.</li>
+  <li>Your <strong>geographic location</strong>. Geofencing functions operate entirely on the device.</li>
+  <li>The <strong>content of notifications</strong> from other apps. Reclaim may suppress notifications from blocked apps but never reads or transmits their content.</li>
+  <li>Screenshots, screen recordings, accessibility text-to-speech buffers.</li>
+  <li>Browsing history, web searches, data from other apps.</li>
+</ul>
+
+<h2>3. Data we collect</h2>
+<p>We collect exclusively the following data types:</p>
+
+<h3>3.1 Account data</h3>
+<table>
+  <tr><th>Data</th><th>Source</th><th>Purpose</th><th>Legal basis</th></tr>
+  <tr><td>Email</td><td>Entered by you or received from OAuth provider (Google/Apple)</td><td>Identification, login, service communications</td><td>Contract performance (art. 6.1.b GDPR)</td></tr>
+  <tr><td>Provider unique ID</td><td>Google <code>sub</code> or Apple <code>sub</code></td><td>Recognize you on subsequent logins</td><td>Contract performance</td></tr>
+  <tr><td>Username</td><td>Entered by you during onboarding</td><td>App personalization</td><td>Contract performance</td></tr>
+  <tr><td>Password (only if email signup)</td><td>Entered by you</td><td>Authentication</td><td>Contract performance</td></tr>
+  <tr><td>Creation timestamp and last login</td><td>System-generated</td><td>Security, anomalous access detection</td><td>Legitimate interest (art. 6.1.f)</td></tr>
+</table>
+
+<p>Passwords are stored in encrypted form (bcrypt hashing via Supabase Auth). Solnovium SRLS personnel <strong>have no access to plain-text passwords</strong>.</p>
+
+<h3>3.2 Usage data (wellbeing statistics)</h3>
+<table>
+  <tr><th>Data</th><th>Description</th><th>Purpose</th><th>Legal basis</th></tr>
+  <tr><td><code>distractions_avoided</code></td><td>Number of times you avoided opening a blocked app</td><td>Provide your productivity history</td><td>Contract performance</td></tr>
+  <tr><td><code>minutes_recovered</code></td><td>Estimated minutes recovered through blocks</td><td>Statistics display</td><td>Contract performance</td></tr>
+  <tr><td><code>current_streak</code> / <code>longest_streak</code></td><td>Consecutive days of app use</td><td>Motivation, gamification</td><td>Contract performance</td></tr>
+</table>
+
+<p>The app is classified as a digital productivity and wellbeing tool, <strong>not a medical device or therapeutic service</strong>. Collected data is not treated as health data under art. 9 GDPR.</p>
+
+<h3>3.3 Pseudonymous analytics data</h3>
+<p>To improve the service we collect aggregated usage events (e.g. which screen is viewed, onboarding completion, paywall conversion). These events are tied to a <strong>random identifier generated on your device</strong>, not to your email or username.</p>
+<p>Provider: <strong>PostHog Cloud EU</strong> (servers in Frankfurt, Germany). See section 6.</p>
+<p>You can <strong>disable analytics at any time</strong> from Profile → Settings → "Anonymous analytics" (toggle off). After opt-out no further events are sent and the local identifier is cleared.</p>
+
+<h3>3.4 Fully anonymous aggregated data</h3>
+<p>Reclaim maintains a <strong>single aggregated counter</strong> called <code>total_distractions_avoided</code>, summing the total number of times the entire user base has resisted opening a blocked app.</p>
+<p>This counter:</p>
+<ul>
+  <li>is a <strong>single integer</strong> (e.g. 12,847,392) — it contains no <code>user_id</code>, no per-user timestamp, no geolocation, no time bucketing or any other identifier;</li>
+  <li>is <strong>mathematically impossible</strong> to use to trace a single user's activity, even when combined with other information;</li>
+  <li>under GDPR Recital 26 is classified as <strong>anonymous information</strong> and <strong>does not constitute personal data</strong>;</li>
+  <li>is the <strong>only data</strong> that may be publicly displayed (on our website as a "live counter", in marketing materials) to communicate the cumulative impact of the Reclaim community.</li>
+</ul>
+<p><strong>No other data — not even aggregated — is shared, sold or transferred to third parties.</strong> In particular we do not share: aggregated demographics, geographic heatmaps, hourly statistics, public rankings, leaderboards or any other form of aggregation that could carry re-identification risk.</p>
+
+<h2>4. Sign in with Google</h2>
+<p>Reclaim offers login via your Google account ("Sign in with Google"). When you use it:</p>
+<ul>
+  <li>The flow is <strong>native</strong> on the device (account sheet on iOS, Credential Manager on Android), without a web browser.</li>
+  <li>We receive from Google your <strong>email address</strong> and a <strong>Google unique identifier</strong> (<code>sub</code> field).</li>
+  <li>Due to technical limits of the Android Credential Manager API (Google Identity Services), Google also transmits, without us being able to opt out upfront: first name, last name, profile picture, locale, email verification flag.</li>
+  <li><strong>Privacy minimization (`_scrubProviderMetadata`)</strong>: within milliseconds of login, Reclaim automatically invokes on our database (Supabase) an operation that <strong>deletes the first name, last name, profile picture, locale and other accessory attributes</strong> received from Google. We retain only email + unique identifier. This procedure is verifiable in source code (file <code>auth_service.dart</code>, method <code>_scrubProviderMetadata</code>).</li>
+</ul>
+
+<div class="note">
+Privacy minimization is applied automatically and is not disable. It is visible in server logs as an <code>updateUser</code> operation with null values on profile fields, executed immediately after authentication.
+</div>
+
+<h2>5. Sign in with Apple</h2>
+<p>Reclaim offers login via your Apple ID ("Sign in with Apple"). When you use it:</p>
+<ul>
+  <li>We receive from Apple an <strong>email address</strong> and an <strong>Apple unique identifier</strong>. The email may be your real one (if you chose "Share my email") or an alias from Apple's "<strong>Hide My Email</strong>" service, in the format <code>xxxxx@privaterelay.appleid.com</code>.</li>
+  <li>Apple <strong>does not transmit by default</strong> first name, last name, profile picture, locale: our code does not request such fields (scope reduced to email only).</li>
+  <li>Any accessory fields Apple might transmit in the future are nevertheless discarded immediately via the same Privacy Minimization procedure described in section 4.</li>
+</ul>
+
+<h3>5.1 Hide My Email — Apple's email anonymization</h3>
+<p>If you choose "Hide My Email" at first sign-in with Apple, Apple generates a unique random alias for Reclaim (e.g. <code>mxk9p3vqj7@privaterelay.appleid.com</code>). For us that alias is your email in every respect: we do not know and will never be able to know your real email address.</p>
+<p>When we send you transactional emails (e.g. account deletion confirmation), Apple receives them at the alias and forwards them to your real address through its own mail relay. The email content passes through Apple servers acting as neutral intermediaries.</p>
+<p><strong>Important</strong>: at any time you can disable Apple's email forwarding from your Apple ID settings (iOS Settings → Apple ID → "Sign in with Apple" → Reclaim). If you do:</p>
+<ul>
+  <li>Our emails to that alias no longer reach you.</li>
+  <li>Reclaim has no way to know that the relay is disabled.</li>
+  <li>Service notifications (e.g. deletion confirmations) will be silently dropped.</li>
+</ul>
+<p>To restore the communication channel you can: (a) re-enable the Apple relay, or (b) log in to Reclaim and manually update your real email in Profile → Settings.</p>
+
+<h2>6. Third-party providers (data processors)</h2>
+<p>To deliver the service we rely on the following providers, appointed as data processors under art. 28 GDPR. With each we have signed a Data Processing Agreement (DPA).</p>
+
+<table>
+  <tr><th>Provider</th><th>Service</th><th>Server location</th><th>Extra-EU transfer?</th></tr>
+  <tr><td>Supabase Inc. / Supabase EU SARL</td><td>PostgreSQL database, authentication, edge functions</td><td>Ireland (EU)</td><td>No</td></tr>
+  <tr><td>PostHog Inc.</td><td>Aggregated product analytics</td><td>Frankfurt, Germany (EU)</td><td>No</td></tr>
+  <tr><td>Apple Inc. / Apple Distribution International Ltd.</td><td>App Store, In-App Purchase, Sign in with Apple, Mail Relay</td><td>Global (Apple)</td><td>Yes — covered by Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
+  <tr><td>Google LLC / Google Ireland Ltd.</td><td>Google Play Store, In-App Purchase, Sign in with Google, Cloud Messaging</td><td>Global (Google)</td><td>Yes — covered by Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
+  <tr><td>RevenueCat Inc. <span class="meta">(when activated)</span></td><td>Cross-platform subscription management</td><td>United States</td><td>Yes — covered by Standard Contractual Clauses</td></tr>
+  <tr><td>Resend (Resend Labs Inc.) <span class="meta">(when activated)</span></td><td>Transactional email delivery</td><td>United States</td><td>Yes — covered by Standard Contractual Clauses</td></tr>
+</table>
+
+<h2>7. Extra-EU data transfers</h2>
+<p>Data managed by Supabase and PostHog stays entirely within the European Union (servers in Ireland and Germany respectively).</p>
+<p>Data managed by Apple, Google, RevenueCat and Resend may be transferred to the United States or other extra-EU countries. Such transfers are covered by Standard Contractual Clauses (SCCs) approved by the European Commission and — where applicable — by certification under the EU-U.S. Data Privacy Framework. You can request a copy of the standard contractual clauses by writing to the privacy email.</p>
+
+<h2>8. Retention period</h2>
+<p><strong>Active account</strong>: your data is retained while your account is active.</p>
+<p><strong>Account deletion</strong>: when you delete your account from the app's Profile:</p>
+<ul>
+  <li>Your data (account, statistics, diary) is deleted immediately from the main database table.</li>
+  <li>Daily safety backups still containing your data are rotated and definitively deleted within <strong>30 days</strong>.</li>
+  <li>After 30 days from deletion, no residual copy of your data exists in our systems.</li>
+</ul>
+<p>We do not maintain long-term backups (monthly or yearly) for personally identifiable data.</p>
+
+<h2>9. User rights (arts. 15–22 GDPR)</h2>
+<p>You can exercise the following rights at any time:</p>
+
+<h3>9.1 Right of access (art. 15)</h3>
+<p>You can request a copy of your personal data by writing to <a href="mailto:privacy.reclaim@solnovium.com">privacy.reclaim@solnovium.com</a>. We provide the export in JSON format within 30 days of the request.</p>
+
+<h3>9.2 Right to rectification (art. 16)</h3>
+<p>You can update username, email and other profile data directly in the app (Profile → Settings). For changes not available in the app, contact us.</p>
+
+<h3>9.3 Right to erasure (art. 17, "right to be forgotten")</h3>
+<p>You can delete your account at any time from Profile → "Delete account". The operation deletes all your data (see section 8). Alternatively you can request deletion via email at the privacy address.</p>
+
+<h3>9.4 Right to restriction (art. 18)</h3>
+<p>You can request that we restrict the processing of specific data (e.g. retain but not use it for analytics) by writing to the privacy address.</p>
+
+<h3>9.5 Right to data portability (art. 20)</h3>
+<p>You can export your data <strong>directly from the app, instantly</strong>: Profile → "Your data" → "Export your data (JSON)". The data is copied to your device clipboard in structured JSON format (`profile`, `journeys`, `daily_stats`) and you can paste it anywhere (notes, email, cloud drive) for archival or transfer to another service.</p>
+<p>Alternatively you can request the export via email at the privacy address: in that case we provide the JSON file within 30 days of the request.</p>
+
+<h3>9.6 Right to object (art. 21)</h3>
+<p>You can object to the processing of your data for direct marketing purposes (which we do not perform) or for analytics. For analytics: use the "Anonymous analytics" toggle in Profile. For other processing: contact us.</p>
+
+<h3>9.7 Right not to be subject to automated decisions (art. 22)</h3>
+<p>Reclaim does not use automated profiling or algorithmic decision-making processes that produce legal effects on the user.</p>
+
+<h2>10. Cookies and trackers</h2>
+<p>The Reclaim app does not use traditional cookies (it is a native app, not a website).</p>
+<p>PostHog analytics uses a random identifier stored device-side in <code>SharedPreferences</code> (Android) or <code>UserDefaults</code> (iOS). This identifier is not a cookie, is not shared with third-party advertisers, and can be cleared by disabling analytics from Profile (a new ID will be generated if you re-enable).</p>
+<p>Reclaim <strong>does not contain</strong>: advertisements, advertising trackers, marketing SDKs, device fingerprinting, cross-app retargeting.</p>
+
+<h2>11. Security</h2>
+<p>We adopt technical and organizational measures appropriate under art. 32 GDPR:</p>
+<ul>
+  <li>Data transmission exclusively via HTTPS/TLS 1.3</li>
+  <li>At-rest encryption of the Supabase database</li>
+  <li>User passwords hashed with bcrypt</li>
+  <li>Session tokens (JWT) with limited expiration</li>
+  <li>Row-Level Security (RLS) on the database: each user accesses only their own data</li>
+  <li>Access to the Supabase database restricted to authorized Solnovium SRLS personnel only</li>
+  <li>Audit logging of administrative operations</li>
+</ul>
+
+<h2>12. Service not intended for minors</h2>
+<p>Reclaim is intended for adult users (≥18 years old). We do not knowingly collect data from minors. If you are a parent and believe your minor child has created an account, contact us immediately for deletion.</p>
+
+<h2>13. Complaints to the supervisory authority</h2>
+<p>You have the right to file a complaint with the <strong>Italian Data Protection Authority</strong>:</p>
+<p>
+  Garante per la Protezione dei Dati Personali<br>
+  Piazza di Monte Citorio, 121 — 00186 Roma, Italy<br>
+  Website: <a href="https://www.gpdp.it" target="_blank" rel="noopener">www.gpdp.it</a><br>
+  PEC: <a href="mailto:protocollo@pec.gpdp.it">protocollo@pec.gpdp.it</a>
+</p>
+<p>If you reside in another EU member state, you can also file a complaint with your local data protection authority.</p>
+
+<h2>14. Policy changes</h2>
+<p>We may update this Privacy Policy over time (new features, provider changes, regulatory updates). Substantial changes will be notified to you:</p>
+<ul>
+  <li>via in-app notice on next launch,</li>
+  <li>or via email to the address associated with your account.</li>
+</ul>
+<p>The current version is always available at this URL. We will keep history of past versions on request.</p>
+
+<h2>15. Contacts</h2>
+<p>For any questions or to exercise your rights:</p>
+<p>
+  <strong>Solnovium SRLS</strong><br>
+  Privacy email: <a href="mailto:privacy.reclaim@solnovium.com">privacy.reclaim@solnovium.com</a><br>
+  Postal address: Via Cunfida 20, 00195 Roma (RM), Italy
+</p>
+
+<footer class="site">
+  <a href="index.en.html">Home</a> ·
+  <a href="terms.en.html">Terms</a> ·
+  <a href="privacy.html">Italiano</a>
+</footer>
+</div>
+</body>
+</html>
