@@ -129,23 +129,6 @@
 <p>Provider: <strong>PostHog Cloud EU</strong> (server Francoforte, Germania). Vedi sezione 6.</p>
 <p>Puoi <strong>disattivare l'analytics in qualsiasi momento</strong> da Profilo → Impostazioni → "Analytics anonimi" (toggle off). Dopo l'opt-out non vengono inviati ulteriori eventi e l'identificativo locale viene cancellato.</p>
 
-<h3>3.3.bis Marketing & misurazione campagne pubblicitarie</h3>
-<p>Per misurare l'efficacia delle nostre campagne pubblicitarie (es. inserzioni su Meta — Facebook/Instagram) e ottimizzare la spesa marketing, raccogliamo i seguenti eventi e li trasmettiamo a Meta Platforms Inc.:</p>
-<ul>
-  <li><strong>App Install</strong>, <strong>App Open</strong>, durata sessione (raccolti automaticamente al primo lancio e a ogni apertura dell'app)</li>
-  <li><strong>Sign Up</strong>, <strong>Start Trial</strong> (registrato dopo conferma volontaria del paywall), <strong>Subscribe</strong> (registrato dopo addebito reale, quando attiveremo i pagamenti)</li>
-</ul>
-<p>Insieme a questi eventi vengono inviati a Meta:</p>
-<ul>
-  <li><strong>Identificatore pubblicitario del dispositivo</strong>: solo Android Advertising ID (su iOS NON inviamo l'IDFA — vedi paragrafo successivo)</li>
-  <li>Modello dispositivo, sistema operativo, lingua, paese (informazioni tecniche aggregate)</li>
-  <li><strong>Nessuna email</strong>, <strong>nessun username</strong>, <strong>nessun dato Reclaim personale</strong> (statistiche di blocco, lista app, posizione)</li>
-</ul>
-<p>Su iOS, Reclaim <strong>non mostra alcun prompt di tracking</strong>. L'attribuzione campagne avviene esclusivamente tramite il sistema privacy-preserving Apple <strong>SKAdNetwork</strong>, che fornisce a Meta statistiche aggregate (es. "tot install dalla campagna X") senza identificare il singolo utente. L'IDFA del tuo iPhone non viene mai letto né trasmesso da Reclaim a Meta. Su Android l'attribution avviene tramite Advertising ID (gestibile da Impostazioni Android → Privacy → Annunci → "Reimposta ID pubblicità" o "Disattiva personalizzazione annunci").</p>
-<p>Provider: <strong>Meta Platforms Inc.</strong> (Stati Uniti). Vedi sezione 6 per dettagli su trasferimenti extra-UE e DPA. La <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">Privacy Policy completa di Meta</a> descrive il trattamento dei dati ricevuti lato loro.</p>
-<p><strong>Periodo di conservazione lato Meta</strong>: gli eventi conversion vengono conservati da Meta per circa 90 giorni per finalità di attribution e ottimizzazione campagne; aggregati statistici fino a 1 anno. Per richieste di accesso o cancellazione dei dati lato Meta puoi usare lo strumento ufficiale: <a href="https://accountscenter.facebook.com/info_and_permissions" target="_blank" rel="noopener">accountscenter.facebook.com</a>.</p>
-<p>Puoi <strong>disattivare anche questa raccolta lato Reclaim</strong> in qualsiasi momento dallo stesso toggle "Analytics anonimi" del Profilo. La preferenza vale sia per PostHog (analytics di prodotto) sia per Meta (marketing): un singolo opt-out spegne entrambi.</p>
-
 <h3>3.4 Dati aggregati completamente anonimi</h3>
 <p>Reclaim mantiene un <strong>singolo contatore aggregato</strong> chiamato <code>total_distractions_avoided</code>, che somma il numero totale di volte in cui l'insieme degli utenti ha resistito ad aprire un'app bloccata.</p>
 <p>Questo contatore:</p>
@@ -199,14 +182,13 @@ La Privacy minimization è applicata in modo automatico e non disabilitabile. È
   <tr><td>PostHog Inc.</td><td>Analytics di prodotto aggregati</td><td>Francoforte, Germania (UE)</td><td>No</td></tr>
   <tr><td>Apple Inc. / Apple Distribution International Ltd.</td><td>App Store, In-App Purchase, Sign in with Apple, Mail Relay</td><td>Globale (Apple)</td><td>Sì — coperto da Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
   <tr><td>Google LLC / Google Ireland Ltd.</td><td>Google Play Store, In-App Purchase, Sign in with Google, Cloud Messaging</td><td>Globale (Google)</td><td>Sì — coperto da Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
-  <tr><td>Meta Platforms, Inc. / Meta Platforms Ireland Ltd.</td><td>Marketing attribution (App Events SDK) — misurazione campagne pubblicitarie Facebook/Instagram</td><td>Stati Uniti / Irlanda</td><td>Sì — coperto da Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
   <tr><td>RevenueCat Inc. <span class="meta">(quando attivato)</span></td><td>Gestione subscription cross-platform</td><td>Stati Uniti</td><td>Sì — coperto da Standard Contractual Clauses</td></tr>
   <tr><td>Resend (Resend Labs Inc.) <span class="meta">(quando attivato)</span></td><td>Invio email transazionali</td><td>Stati Uniti</td><td>Sì — coperto da Standard Contractual Clauses</td></tr>
 </table>
 
 <h2>7. Trasferimenti di dati extra-UE</h2>
 <p>I dati gestiti da Supabase e PostHog restano interamente all'interno dell'Unione Europea (server in Irlanda e Germania rispettivamente).</p>
-<p>I dati gestiti da Apple, Google, Meta, RevenueCat e Resend possono essere trasferiti negli Stati Uniti o in altri paesi extra-UE. Tali trasferimenti sono coperti da Standard Contractual Clauses (Clausole Contrattuali Tipo) approvate dalla Commissione Europea, e — quando applicabile — dalla certificazione EU-U.S. Data Privacy Framework (Apple, Google, Meta sono certificati DPF). Puoi richiederci copia delle clausole contrattuali tipo scrivendo all'indirizzo privacy.</p>
+<p>I dati gestiti da Apple, Google, RevenueCat e Resend possono essere trasferiti negli Stati Uniti o in altri paesi extra-UE. Tali trasferimenti sono coperti da Standard Contractual Clauses (Clausole Contrattuali Tipo) approvate dalla Commissione Europea, e — quando applicabile — dalla certificazione EU-U.S. Data Privacy Framework (Apple, Google sono certificati DPF). Puoi richiederci copia delle clausole contrattuali tipo scrivendo all'indirizzo privacy.</p>
 
 <h2>8. Periodo di conservazione</h2>
 <p><strong>Account attivo</strong>: i tuoi dati restano conservati finché il tuo account è attivo.</p>
