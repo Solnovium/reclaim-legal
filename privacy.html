@@ -17,7 +17,7 @@
 </header>
 
 <h1>Privacy Policy</h1>
-<p class="meta">Aggiornata il 29 aprile 2026</p>
+<p class="meta">Versione 1.1 — Ultimo aggiornamento: 29 aprile 2026</p>
 
 <p>La presente Privacy Policy descrive come Solnovium SRLS raccoglie, usa e protegge i dati personali degli utenti dell'app Reclaim, in conformità al Regolamento UE 2016/679 (GDPR), al D.Lgs. 196/2003 e successive modifiche, e alle linee guida del Garante Italiano per la Protezione dei Dati Personali.</p>
 
@@ -40,6 +40,64 @@
   <li>Schermate, screenshot, screen recording, accessibilità testo letto.</li>
   <li>Cronologia di navigazione, ricerche web, dati di altre app.</li>
 </ul>
+
+<h2>2.bis Permessi del dispositivo: come Reclaim usa Accessibility e Posizione</h2>
+
+<p>Reclaim richiede due permessi sensibili sul tuo dispositivo per offrirti la funzione principale dell'app, ovvero il blocco delle app distraenti che hai scelto. Questa sezione descrive in modo trasparente cosa fanno e — soprattutto — cosa <strong>non fanno</strong>.</p>
+
+<h3>2.bis.1 Servizio di accessibilità (Android — <code>BIND_ACCESSIBILITY_SERVICE</code>)</h3>
+
+<p><strong>A cosa serve</strong>: il servizio di accessibilità è il meccanismo tecnico tramite cui Reclaim rileva quando apri un'app che hai precedentemente scelto di bloccare. Quando lo rileva, mostra una schermata overlay che ti impedisce di usare l'app distraente e ti riporta alla home del telefono.</p>
+
+<p><strong>Cosa fa concretamente</strong>:</p>
+<ul>
+  <li>Riceve dal sistema operativo eventi di "cambio finestra attiva" (<code>TYPE_WINDOW_STATE_CHANGED</code>)</li>
+  <li>Confronta il nome del package dell'app in primo piano con la tua lista di app bloccate (memorizzata localmente)</li>
+  <li>Se l'app è in lista, attiva il blocco (overlay + ritorno alla home)</li>
+</ul>
+
+<p><strong>Cosa NON fa</strong> (impegno esplicito di Solnovium SRLS):</p>
+<ul>
+  <li>❌ <strong>Non legge il contenuto delle schermate</strong> di altre app (testi, foto, messaggi)</li>
+  <li>❌ <strong>Non registra l'attività</strong> dell'utente nelle app</li>
+  <li>❌ <strong>Non invia ai nostri server</strong> né a terze parti il nome delle app aperte, gli orari di utilizzo, la lista delle app installate</li>
+  <li>❌ <strong>Non profila</strong> l'utente per finalità di marketing o pubblicità</li>
+  <li>❌ <strong>Non utilizza</strong> il servizio di accessibilità per finalità diverse dal blocco app dichiarato</li>
+</ul>
+
+<p><strong>Trattamento dei dati</strong>: tutte le informazioni elaborate dal servizio di accessibilità (nomi dei package, timestamp di apertura) restano <strong>esclusivamente sul tuo dispositivo</strong> e non vengono mai trasmesse esternamente. La lista di app bloccate è salvata in <code>SharedPreferences</code> private dell'app.</p>
+
+<p><strong>Concessione del permesso</strong>: il permesso viene richiesto in modo esplicito durante l'onboarding (schermata "Permessi di blocco"). Devi attivarlo manualmente da Impostazioni Android → Accessibilità → Reclaim. Puoi revocarlo in qualsiasi momento dalle stesse impostazioni.</p>
+
+<p><strong>Base giuridica</strong>: esecuzione del contratto (art. 6.1.b GDPR) — il servizio di accessibilità è strettamente necessario per fornirti la funzione di blocco app per cui ti sei iscritto a Reclaim.</p>
+
+<h3>2.bis.2 Posizione in background (<code>ACCESS_BACKGROUND_LOCATION</code>)</h3>
+
+<p><strong>A cosa serve</strong>: la posizione in background è utilizzata esclusivamente per la funzione opzionale di <strong>geofencing</strong>: bloccare automaticamente le app distraenti quando entri in zone che hai configurato (ad esempio luogo di lavoro, scuola, palestra).</p>
+
+<p><strong>Cosa fa concretamente</strong>:</p>
+<ul>
+  <li>Quando configuri un geofence dall'app (Modi → Posizione), Reclaim registra le coordinate da te scelte presso il sistema operativo Android tramite Google Play Services Geofence API</li>
+  <li>Il sistema operativo monitora autonomamente la tua posizione e notifica Reclaim solo quando entri o esci dalle aree configurate</li>
+  <li>All'evento di entrata, Reclaim attiva il blocco delle app associate; all'uscita, le sblocca</li>
+</ul>
+
+<p><strong>Cosa NON fa</strong> (impegno esplicito di Solnovium SRLS):</p>
+<ul>
+  <li>❌ <strong>Non traccia continuamente la tua posizione</strong> — riceve solo eventi puntuali ENTER/EXIT alle zone che hai configurato</li>
+  <li>❌ <strong>Non invia coordinate ai nostri server</strong> o a terze parti</li>
+  <li>❌ <strong>Non condivide la posizione</strong> con piattaforme pubblicitarie o di marketing</li>
+  <li>❌ <strong>Non costruisce una mappa</strong> degli spostamenti dell'utente</li>
+  <li>❌ <strong>Non utilizza la posizione</strong> per finalità diverse dal geofencing dichiarato</li>
+</ul>
+
+<p><strong>Trattamento dei dati</strong>: le coordinate dei geofence che configuri sono salvate <strong>esclusivamente sul tuo dispositivo</strong> in <code>SharedPreferences</code> private. Non vengono mai sincronizzate, trasmesse o conservate sui nostri server. Alla disinstallazione dell'app vengono cancellate automaticamente dal sistema operativo.</p>
+
+<p><strong>Permesso opzionale</strong>: questa funzione è completamente <strong>opzionale</strong>. Se non configuri alcun geofence, Reclaim non richiede mai il permesso di posizione né accede ai dati di posizione. Puoi usare tutte le altre funzioni di blocco app senza concedere questo permesso.</p>
+
+<p><strong>Concessione del permesso</strong>: il permesso viene richiesto solo nel momento in cui l'utente sceglie di attivare la funzione geofence durante l'onboarding (schermata "Blocco basato sul luogo") o successivamente da Modi → Posizione. Su Android 11 e successivi, viene richiesta prima la posizione "solo durante l'uso dell'app" e successivamente, separatamente, l'estensione "consenti sempre" (background) tramite il flusso di sistema standard.</p>
+
+<p><strong>Base giuridica</strong>: esecuzione del contratto (art. 6.1.b GDPR), limitatamente agli utenti che attivano volontariamente la funzione di geofencing.</p>
 
 <h2>3. Dati che raccogliamo</h2>
 <p>Raccogliamo esclusivamente le seguenti tipologie di dati:</p>
@@ -202,8 +260,26 @@ La Privacy minimization è applicata in modo automatico e non disabilitabile. È
   <li>Audit logging delle operazioni amministrative</li>
 </ul>
 
-<h2>12. Servizio non destinato a minori</h2>
-<p>Reclaim è destinato a un pubblico maggiore di età (≥18 anni). Non raccogliamo consapevolmente dati di minori. Se sei un genitore e ritieni che tuo figlio minore abbia creato un account, contattaci immediatamente per la cancellazione.</p>
+<h2>12. Età minima e privacy dei minori</h2>
+
+<p>Reclaim è destinato a utenti a partire dai <strong>14 anni</strong> (limite definito dal D.Lgs. 101/2018 di recepimento del GDPR in Italia per il consenso al trattamento dati nei servizi della società dell'informazione).</p>
+
+<p>Per accedere a Reclaim è obbligatorio dichiarare di avere almeno 14 anni compiuti. La dichiarazione viene registrata con timestamp, indirizzo IP e versione dei termini accettati per finalità di accountability ai sensi dell'art. 5(2) GDPR.</p>
+
+<p><strong>Utenti tra 14 e 17 anni</strong>: Reclaim presume che l'utente abbia ottenuto il consenso del proprio genitore o tutore legale prima di iscriversi. L'eventuale abbonamento è gestito tramite il sistema di pagamento di Apple App Store o Google Play Store, che richiedono autenticazione del titolare del metodo di pagamento (di norma il genitore).</p>
+
+<p><strong>Procedura per genitori e tutori</strong>: se ritieni che un minore di cui sei genitore o tutore abbia creato un account su Reclaim e desideri richiederne la cancellazione, contatta <a href="mailto:privacy.reclaim@solnovium.com">privacy.reclaim@solnovium.com</a> allegando:</p>
+<ul>
+  <li>Copia di un documento di identità del minore (per verificare l'età)</li>
+  <li>Copia del tuo documento di identità (per verificare la relazione)</li>
+  <li>L'email associata all'account Reclaim</li>
+</ul>
+
+<p>Solnovium provvederà entro <strong>24 ore</strong> alla sospensione dell'account, e entro <strong>7 giorni lavorativi</strong> alla cancellazione completa dei dati personali del minore. La verifica e cancellazione sono gratuite. Vedi anche <a href="account-deletion.html">Cancellazione dell'account</a> per la procedura completa.</p>
+
+<p><strong>Limitazioni della verifica preventiva</strong>: Reclaim non è in grado di verificare in modo proattivo l'età reale degli utenti senza misure invasive che riteniamo sproporzionate rispetto al rischio del nostro servizio. Adottiamo l'approccio basato su dichiarazione informata previsto dalle linee guida EDPB e dalla normativa applicabile, integrato dalla procedura di rimozione su segnalazione descritta sopra.</p>
+
+<p><strong>Marketing e profilazione di minori</strong>: gli utenti dichiaratamente sotto i 18 anni non vengono inclusi in operazioni di marketing personalizzato.</p>
 
 <h2>13. Reclami all'Autorità di controllo</h2>
 <p>Hai il diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong> italiano:</p>
