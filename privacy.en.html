@@ -17,7 +17,7 @@
 </header>
 
 <h1>Privacy Policy</h1>
-<p class="meta">Version 1.0 — Last updated: April 27, 2026</p>
+<p class="meta">Last updated: April 29, 2026</p>
 
 <p>This Privacy Policy describes how Solnovium SRLS collects, uses and protects the personal data of Reclaim app users, in compliance with EU Regulation 2016/679 (GDPR), Italian Legislative Decree 196/2003 as amended, and the guidelines of the Italian Data Protection Authority (Garante).</p>
 
@@ -71,6 +71,23 @@
 <p>Provider: <strong>PostHog Cloud EU</strong> (servers in Frankfurt, Germany). See section 6.</p>
 <p>You can <strong>disable analytics at any time</strong> from Profile → Settings → "Anonymous analytics" (toggle off). After opt-out no further events are sent and the local identifier is cleared.</p>
 
+<h3>3.3.bis Marketing & advertising campaign measurement</h3>
+<p>To measure the effectiveness of our advertising campaigns (e.g. ads on Meta — Facebook/Instagram) and optimize marketing spending, we collect the following events and transmit them to Meta Platforms Inc.:</p>
+<ul>
+  <li><strong>App Install</strong>, <strong>App Open</strong>, session duration (collected automatically on first launch and every app open)</li>
+  <li><strong>Sign Up</strong>, <strong>Start Trial</strong> (recorded after voluntary paywall confirmation), <strong>Subscribe</strong> (recorded after actual charge, when we activate payments)</li>
+</ul>
+<p>Together with these events the following are sent to Meta:</p>
+<ul>
+  <li><strong>Device advertising identifier</strong>: only Android Advertising ID (on iOS we do NOT send the IDFA — see paragraph below)</li>
+  <li>Device model, operating system, language, country (technical aggregated information)</li>
+  <li><strong>No email</strong>, <strong>no username</strong>, <strong>no personal Reclaim data</strong> (block statistics, app list, location)</li>
+</ul>
+<p>On iOS, Reclaim <strong>does not show any tracking prompt</strong>. Campaign attribution is performed exclusively via Apple's privacy-preserving <strong>SKAdNetwork</strong> system, which provides Meta with aggregated statistics (e.g. "X installs from campaign Y") without identifying the individual user. Your iPhone's IDFA is never read nor transmitted by Reclaim to Meta. On Android attribution happens via Advertising ID (manageable from Android Settings → Privacy → Ads → "Reset advertising ID" or "Disable ad personalization").</p>
+<p>Provider: <strong>Meta Platforms Inc.</strong> (United States). See section 6 for details on extra-EU transfers and DPA. Meta's <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">full Privacy Policy</a> describes data handling on their side.</p>
+<p><strong>Retention period on Meta's side</strong>: conversion events are retained by Meta for approximately 90 days for attribution and campaign optimization purposes; statistical aggregates up to 1 year. For data access or deletion requests on Meta's side you can use the official tool: <a href="https://accountscenter.facebook.com/info_and_permissions" target="_blank" rel="noopener">accountscenter.facebook.com</a>.</p>
+<p>You can <strong>disable this collection on Reclaim's side</strong> at any time from the same "Anonymous analytics" toggle in Profile. The preference applies to both PostHog (product analytics) and Meta (marketing): a single opt-out turns off both.</p>
+
 <h3>3.4 Fully anonymous aggregated data</h3>
 <p>Reclaim maintains a <strong>single aggregated counter</strong> called <code>total_distractions_avoided</code>, summing the total number of times the entire user base has resisted opening a blocked app.</p>
 <p>This counter:</p>
@@ -115,7 +132,9 @@ Privacy minimization is applied automatically and is not disable. It is visible 
 <p>To restore the communication channel you can: (a) re-enable the Apple relay, or (b) log in to Reclaim and manually update your real email in Profile → Settings.</p>
 
 <h2>6. Third-party providers (data processors)</h2>
+
 <p>To deliver the service we rely on the following providers, appointed as data processors under art. 28 GDPR. With each we have signed a Data Processing Agreement (DPA).</p>
+<p class="meta">For providers with auto-applicable standard DPA regime for EU business portfolios under GDPR (e.g. Meta Platforms), the DPA acceptance is included in the standard commercial terms accepted at the registration of our Business Manager.</p>
 
 <table>
   <tr><th>Provider</th><th>Service</th><th>Server location</th><th>Extra-EU transfer?</th></tr>
@@ -123,13 +142,14 @@ Privacy minimization is applied automatically and is not disable. It is visible 
   <tr><td>PostHog Inc.</td><td>Aggregated product analytics</td><td>Frankfurt, Germany (EU)</td><td>No</td></tr>
   <tr><td>Apple Inc. / Apple Distribution International Ltd.</td><td>App Store, In-App Purchase, Sign in with Apple, Mail Relay</td><td>Global (Apple)</td><td>Yes — covered by Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
   <tr><td>Google LLC / Google Ireland Ltd.</td><td>Google Play Store, In-App Purchase, Sign in with Google, Cloud Messaging</td><td>Global (Google)</td><td>Yes — covered by Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
+  <tr><td>Meta Platforms, Inc. / Meta Platforms Ireland Ltd.</td><td>Marketing attribution (App Events SDK) — measurement of Facebook/Instagram advertising campaigns</td><td>United States / Ireland</td><td>Yes — covered by Standard Contractual Clauses + EU-US Data Privacy Framework</td></tr>
   <tr><td>RevenueCat Inc. <span class="meta">(when activated)</span></td><td>Cross-platform subscription management</td><td>United States</td><td>Yes — covered by Standard Contractual Clauses</td></tr>
   <tr><td>Resend (Resend Labs Inc.) <span class="meta">(when activated)</span></td><td>Transactional email delivery</td><td>United States</td><td>Yes — covered by Standard Contractual Clauses</td></tr>
 </table>
 
 <h2>7. Extra-EU data transfers</h2>
 <p>Data managed by Supabase and PostHog stays entirely within the European Union (servers in Ireland and Germany respectively).</p>
-<p>Data managed by Apple, Google, RevenueCat and Resend may be transferred to the United States or other extra-EU countries. Such transfers are covered by Standard Contractual Clauses (SCCs) approved by the European Commission and — where applicable — by certification under the EU-U.S. Data Privacy Framework. You can request a copy of the standard contractual clauses by writing to the privacy email.</p>
+<p>Data managed by Apple, Google, Meta, RevenueCat and Resend may be transferred to the United States or other extra-EU countries. Such transfers are covered by Standard Contractual Clauses (SCCs) approved by the European Commission and — where applicable — by certification under the EU-U.S. Data Privacy Framework (Apple, Google, Meta are DPF-certified). You can request a copy of the standard contractual clauses by writing to the privacy email.</p>
 
 <h2>8. Retention period</h2>
 <p><strong>Active account</strong>: your data is retained while your account is active.</p>
