@@ -17,7 +17,7 @@
 </header>
 
 <h1>Privacy Policy</h1>
-<p class="meta">Versione 1.1 — Ultimo aggiornamento: 29 aprile 2026</p>
+<p class="meta">Versione 1.2 — Ultimo aggiornamento: 12 maggio 2026 (aggiunte sezioni 2.bis.3 servizio in primo piano e 2.bis.4 permesso notifiche)</p>
 
 <p>La presente Privacy Policy descrive come Solnovium SRLS raccoglie, usa e protegge i dati personali degli utenti dell'app Reclaim, in conformità al Regolamento UE 2016/679 (GDPR), al D.Lgs. 196/2003 e successive modifiche, e alle linee guida del Garante Italiano per la Protezione dei Dati Personali.</p>
 
@@ -98,6 +98,37 @@
 <p><strong>Concessione del permesso</strong>: il permesso viene richiesto solo nel momento in cui l'utente sceglie di attivare la funzione geofence durante l'onboarding (schermata "Blocco basato sul luogo") o successivamente da Modi → Posizione. Su Android 11 e successivi, viene richiesta prima la posizione "solo durante l'uso dell'app" e successivamente, separatamente, l'estensione "consenti sempre" (background) tramite il flusso di sistema standard.</p>
 
 <p><strong>Base giuridica</strong>: esecuzione del contratto (art. 6.1.b GDPR), limitatamente agli utenti che attivano volontariamente la funzione di geofencing.</p>
+
+<h3>2.bis.3 Servizio in primo piano (<code>FOREGROUND_SERVICE_SPECIAL_USE</code>, sottotipo <code>screen_time_monitoring</code>)</h3>
+
+<p><strong>A cosa serve</strong>: per consentire all'overlay di blocco di apparire immediatamente anche quando l'app Reclaim non è in primo piano, Reclaim esegue un servizio in primo piano denominato <code>BlockerService</code>. Il servizio è dichiarato nel manifest Android con il sottotipo <code>screen_time_monitoring</code>, ovvero la categoria specifica prevista da Android per le funzionalità di monitoraggio del tempo di utilizzo dello schermo (digital wellbeing).</p>
+
+<p><strong>Comportamento del servizio</strong>:</p>
+<ul>
+  <li>Si avvia <strong>solo</strong> quando l'utente ha almeno un blocco attivo (Timer, Periodo, Posizione o Limite di aperture).</li>
+  <li>Si ferma automaticamente quando l'utente disattiva o termina tutti i blocchi.</li>
+  <li>È event-driven: reagisce agli eventi del servizio di accessibilità, non esegue polling continuo.</li>
+  <li>Mostra in barra di stato una notifica persistente e visibile ("Reclaim attivo — Protezione in esecuzione"), come richiesto dalle norme Android, affinché tu sia sempre consapevole del fatto che il servizio è attivo.</li>
+</ul>
+
+<p><strong>Trattamento dei dati</strong>: il servizio non raccoglie, archivia o trasmette dati. Si limita a gestire localmente l'overlay di blocco e lo stato dei geofence eventualmente attivi. Nessuna informazione esce dal dispositivo.</p>
+
+<p><strong>Base giuridica</strong>: esecuzione del contratto (art. 6.1.b GDPR) — il servizio è strettamente necessario per garantire la reattività della funzione di blocco app.</p>
+
+<h3>2.bis.4 Notifiche (<code>POST_NOTIFICATIONS</code>)</h3>
+
+<p><strong>A cosa serve</strong>: a partire da Android 13 (API 33), per mostrare la notifica persistente del servizio di blocco descritta al punto 2.bis.3 è necessario il permesso runtime <code>POST_NOTIFICATIONS</code>. Reclaim richiede questo permesso nel momento in cui l'utente attiva il primo blocco.</p>
+
+<p><strong>Uso esclusivo</strong>:</p>
+<ul>
+  <li>✅ Mostrare la notifica persistente del servizio di blocco in primo piano (obbligatoria per le norme Android sui foreground service).</li>
+  <li>❌ <strong>Non</strong> inviamo notifiche promozionali, push marketing, suggerimenti, reminder o altri tipi di notifiche.</li>
+  <li>❌ <strong>Non</strong> trasmettiamo dati o eventi associati alle notifiche a server esterni.</li>
+</ul>
+
+<p>Se neghi il permesso, l'app continua a funzionare ma la notifica del servizio in primo piano non sarà visibile in barra di stato; il blocco rimane comunque attivo finché c'è un blocco configurato.</p>
+
+<p><strong>Base giuridica</strong>: esecuzione del contratto (art. 6.1.b GDPR).</p>
 
 <h2>3. Dati che raccogliamo</h2>
 <p>Raccogliamo esclusivamente le seguenti tipologie di dati:</p>

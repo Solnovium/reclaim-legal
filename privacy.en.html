@@ -17,7 +17,7 @@
 </header>
 
 <h1>Privacy Policy</h1>
-<p class="meta">Last updated: April 29, 2026</p>
+<p class="meta">Version 1.2 — Last updated: May 12, 2026 (added section 2.bis covering Accessibility, Background Location, Foreground Service Special Use and Post Notifications permissions)</p>
 
 <p>This Privacy Policy describes how Solnovium SRLS collects, uses and protects the personal data of Reclaim app users, in compliance with EU Regulation 2016/679 (GDPR), Italian Legislative Decree 196/2003 as amended, and the guidelines of the Italian Data Protection Authority (Garante).</p>
 
@@ -40,6 +40,95 @@
   <li>Screenshots, screen recordings, accessibility text-to-speech buffers.</li>
   <li>Browsing history, web searches, data from other apps.</li>
 </ul>
+
+<h2>2.bis Device permissions: how Reclaim uses Accessibility, Location, Foreground Service and Notifications</h2>
+
+<p>Reclaim requires four sensitive Android permissions to provide the app's main feature, namely blocking the distracting applications you have chosen. This section transparently describes what they do and — most importantly — what they <strong>do not do</strong>.</p>
+
+<h3>2.bis.1 Accessibility service (Android — <code>BIND_ACCESSIBILITY_SERVICE</code>)</h3>
+
+<p><strong>Purpose</strong>: the accessibility service is the technical mechanism by which Reclaim detects when you open an app you have previously chosen to block. Upon detection, it shows an overlay screen that prevents you from using the distracting app and returns you to the phone home screen.</p>
+
+<p><strong>What it concretely does</strong>:</p>
+<ul>
+  <li>Receives from the operating system "active window change" events (<code>TYPE_WINDOW_STATE_CHANGED</code>)</li>
+  <li>Compares the package name of the foreground app with your list of blocked apps (stored locally)</li>
+  <li>If the app is in the list, triggers the block (overlay + return to home)</li>
+</ul>
+
+<p><strong>What it does NOT do</strong> (explicit commitment by Solnovium SRLS):</p>
+<ul>
+  <li>❌ <strong>Does not read screen content</strong> of other apps (text, photos, messages)</li>
+  <li>❌ <strong>Does not record user activity</strong> inside apps</li>
+  <li>❌ <strong>Does not send to our servers</strong> nor to third parties the names of opened apps, usage times, or the list of installed apps</li>
+  <li>❌ <strong>Does not profile</strong> the user for marketing or advertising purposes</li>
+  <li>❌ <strong>Does not use</strong> the accessibility service for any purpose other than the declared app blocking</li>
+</ul>
+
+<p><strong>Data handling</strong>: all information processed by the accessibility service (package names, opening timestamps) stays <strong>exclusively on your device</strong> and is never transmitted externally. The list of blocked apps is saved in the app's private <code>SharedPreferences</code>.</p>
+
+<p><strong>Permission grant</strong>: the permission is explicitly requested during onboarding ("Block permissions" screen). You must enable it manually from Android Settings → Accessibility → Reclaim. You can revoke it at any time from the same settings.</p>
+
+<p><strong>Legal basis</strong>: contract performance (art. 6.1.b GDPR) — the accessibility service is strictly necessary to provide the app blocking feature you signed up for.</p>
+
+<h3>2.bis.2 Background location (<code>ACCESS_BACKGROUND_LOCATION</code>)</h3>
+
+<p><strong>Purpose</strong>: background location is used exclusively for the optional <strong>geofencing</strong> feature: automatically blocking distracting apps when you enter areas you have configured (for example workplace, school, gym).</p>
+
+<p><strong>What it concretely does</strong>:</p>
+<ul>
+  <li>When you configure a geofence from the app (Modes → Location), Reclaim registers the coordinates you choose with the Android operating system via the Google Play Services Geofence API</li>
+  <li>The operating system autonomously monitors your location and notifies Reclaim only when you enter or exit the configured areas</li>
+  <li>On an ENTER event, Reclaim activates the block on the associated apps; on EXIT, it unblocks them</li>
+</ul>
+
+<p><strong>What it does NOT do</strong> (explicit commitment by Solnovium SRLS):</p>
+<ul>
+  <li>❌ <strong>Does not continuously track your location</strong> — receives only point-in-time ENTER/EXIT events at the zones you configured</li>
+  <li>❌ <strong>Does not send coordinates to our servers</strong> or to third parties</li>
+  <li>❌ <strong>Does not share location</strong> with advertising or marketing platforms</li>
+  <li>❌ <strong>Does not build a map</strong> of the user's movements</li>
+  <li>❌ <strong>Does not use location</strong> for any purpose other than the declared geofencing</li>
+</ul>
+
+<p><strong>Data handling</strong>: the coordinates of the geofences you configure are saved <strong>exclusively on your device</strong> in private <code>SharedPreferences</code>. They are never synchronized, transmitted, or stored on our servers. Upon app uninstallation they are automatically deleted by the operating system.</p>
+
+<p><strong>Optional permission</strong>: this feature is fully <strong>optional</strong>. If you do not configure any geofence, Reclaim never requests the location permission nor accesses location data. You can use all other app blocking features without granting this permission.</p>
+
+<p><strong>Permission grant</strong>: the permission is requested only at the moment the user chooses to activate the geofence feature during onboarding ("Location-based blocking" screen) or later from Modes → Location. On Android 11 and later, "while using the app" location is requested first, and separately the "all the time" (background) extension is requested via the standard system flow.</p>
+
+<p><strong>Legal basis</strong>: contract performance (art. 6.1.b GDPR), limited to users who voluntarily activate the geofencing feature.</p>
+
+<h3>2.bis.3 Foreground service (<code>FOREGROUND_SERVICE_SPECIAL_USE</code>, subtype <code>screen_time_monitoring</code>)</h3>
+
+<p><strong>Purpose</strong>: to allow the block overlay to appear immediately even when the Reclaim app is not in the foreground, Reclaim runs a foreground service called <code>BlockerService</code>. The service is declared in the Android manifest with the <code>screen_time_monitoring</code> subtype, the specific Android category for screen time monitoring (digital wellbeing) functionality.</p>
+
+<p><strong>Service behavior</strong>:</p>
+<ul>
+  <li>Starts <strong>only</strong> when the user has at least one active block (Timer, Schedule, Location, or Launch Limit).</li>
+  <li>Stops automatically when the user deactivates or ends all blocks.</li>
+  <li>Is event-driven: reacts to accessibility service events, does not perform continuous polling.</li>
+  <li>Shows a persistent and user-visible notification in the status bar ("Reclaim attivo — Protezione in esecuzione"), as required by Android rules, so that you are always aware that the service is active.</li>
+</ul>
+
+<p><strong>Data handling</strong>: the service does not collect, store, or transmit any data. It only locally manages the block overlay and the state of any active geofences. No information leaves the device.</p>
+
+<p><strong>Legal basis</strong>: contract performance (art. 6.1.b GDPR) — the service is strictly necessary to ensure the responsiveness of the app blocking feature.</p>
+
+<h3>2.bis.4 Notifications (<code>POST_NOTIFICATIONS</code>)</h3>
+
+<p><strong>Purpose</strong>: starting from Android 13 (API 33), the runtime <code>POST_NOTIFICATIONS</code> permission is required to display the persistent foreground service notification described in section 2.bis.3. Reclaim requests this permission at the moment the user activates the first block.</p>
+
+<p><strong>Exclusive use</strong>:</p>
+<ul>
+  <li>✅ Display the persistent foreground service notification (mandatory under Android foreground service rules).</li>
+  <li>❌ <strong>We do not</strong> send promotional notifications, marketing pushes, suggestions, reminders, or other types of notifications.</li>
+  <li>❌ <strong>We do not</strong> transmit data or events associated with notifications to external servers.</li>
+</ul>
+
+<p>If you deny the permission, the app continues to work but the foreground service notification will not be visible in the status bar; the block remains active as long as there is a configured block.</p>
+
+<p><strong>Legal basis</strong>: contract performance (art. 6.1.b GDPR).</p>
 
 <h2>3. Data we collect</h2>
 <p>We collect exclusively the following data types:</p>
